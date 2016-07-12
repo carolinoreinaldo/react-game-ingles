@@ -1,0 +1,51 @@
+npm init
+
+--Para inicializar um novo projeto, onde será criado também o arquivo package.json
+--que será lido posteriormente pelo "npm install"
+
+
+npm install --save react react-dom
+
+--instalação do react utilizando o npm
+
+
+npm install -save-dev webpack
+
+--instalação do webpack(empacotador de arquivos) em ambiente de dev
+
+#nota - Para o webpack funcionar, ele precisa de um arquivo no diretório raiz 
+do projeto chamado: "webpack.config.js" que irá conter as instruções para serem
+executadas pelo webpack
+
+npm install webpack -g
+
+--o -g indica que o webpack instalado vai ser visto em todo o projeto,
+no comando acima "npm install -save-dev webpack" poderia ter sido utilizado
+o parametro -g direto.
+
+#nota - O arquivo App.js dentro da pasta app vai renderizar os componentes
+dentro do arquivo index.html da pasta public
+
+npm install --save-dev babel-core babel-loader babel-preset-react
+
+webpack
+
+--vai ler o arquivo webpack.config.js executando as intruções, empacotando os arquivos e
+gerando o arquivo bundle.js dentro da pasta public que será consumido pelo index.html.
+
+webpack -w
+
+--vai ficar escutando todas as alterações nos arquivos e atualizar automaticamente.
+
+npm install --save axios
+
+--axios para fazer a integração como back-end
+
+-------------------------------------------------------------------------------------------
+                            AQUI COMEÇA O ES2015(ES6)
+-------------------------------------------------------------------------------------------
+
+npm install --save-dev babel-preset-es2015
+
+--configura o babel para a versão es2015
+
