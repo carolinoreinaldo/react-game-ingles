@@ -1,7 +1,8 @@
 import React from 'react';
-import Questao from './Questao'
-import RespostaCorreta from './RespostaCorreta'
-import RespostaErrada from './RespostaErrada'
+import Questao from './Questao';
+import RespostaCorreta from './RespostaCorreta';
+import RespostaErrada from './RespostaErrada';
+import JsonService from '../services/JsonService'
 
 var Questoes = React.createClass({
     getInicialState : function(){
@@ -10,6 +11,9 @@ var Questoes = React.createClass({
             questaoAtual : null,
         }
     },
+    getJson : JsonService.getJson().then(function(response){
+        this.setState({questoes: response});
+    }),
     componentWillMount: function(){
         this.setState({
             questoes: [

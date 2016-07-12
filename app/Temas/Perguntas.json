@@ -1,0 +1,20 @@
+[
+    {
+        "texto":"Como é seu nome",
+        [
+            "What is your name"
+        ]
+    },
+    {
+        "texto":"Quantos anos você tem?",
+        [
+            "How old are you?"
+        ]
+    },
+    {
+        "texto":"Como é Londres?",
+        [
+            "What is London like?"
+        ]
+    }
+]
