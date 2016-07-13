@@ -4,6 +4,7 @@ import RespostaCorreta from './RespostaCorreta';
 import RespostaErrada from './RespostaErrada';
 import JsonService from '../services/JsonService'
 
+
 var Questoes = React.createClass({
     getInicialState : function(){
         return{
@@ -11,9 +12,6 @@ var Questoes = React.createClass({
             questaoAtual : null,
         }
     },
-    getJson : JsonService.getJson().then(function(response){
-        this.setState({questoes: response});
-    }),
     componentWillMount: function(){
         this.setState({
             questoes: [

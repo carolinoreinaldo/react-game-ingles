@@ -1,19 +1,19 @@
 [
     {
         "texto":"Como é seu nome",
-        [
+        "respostas":[
             "What is your name"
         ]
     },
     {
         "texto":"Quantos anos você tem?",
-        [
+        "respostas":[
             "How old are you?"
         ]
     },
     {
         "texto":"Como é Londres?",
-        [
+        "respostas":[
             "What is London like?"
         ]
     }

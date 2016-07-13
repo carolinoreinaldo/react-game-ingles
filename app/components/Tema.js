@@ -1,17 +1,29 @@
 import React from 'react'
+import Temas from 'json!../Temas/Temas.json'
+import PerguntasJson from 'json!../Temas/Perguntas.json';
 
 var Tema = React.createClass({
+    AtualizarQuestoes: function(event){
+        console.log(event.target.value);
+        if(event.target.value=='PerguntasJson'){
+            this.setState({questoes:PerguntasJson});
+        }
+    },
     render : function(){
         return (
             <div>
-                <select className="form-control custom-select">
-                    <option>Tema 1</option>
-                    <option>Tema 2</option>
-                    <option>Tema 3</option>
-                    <option>Tema 4</option>
-                    <option>Tema 5</option>
-                    <option>Tema 6</option>
-                </select>
+                <form>
+                    <select className="form-control custom-select" onChange={this.AtualizarQuestoes}>
+                    {
+                        
+                        Temas.map(function(elemento,index){
+                            return (
+                                <option key={"option_"+index}>{elemento.titulo}</option>
+                            )
+                        })
+                    }
+                    </select>
+                </form>
             </div>
         )
     }

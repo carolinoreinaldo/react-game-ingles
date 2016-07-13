@@ -21112,7 +21112,7 @@
 
 	var _Questoes2 = _interopRequireDefault(_Questoes);
 
-	var _Tema = __webpack_require__(197);
+	var _Tema = __webpack_require__(198);
 
 	var _Tema2 = _interopRequireDefault(_Tema);
 
@@ -21124,8 +21124,18 @@
 	    getInicialState: function getInicialState() {
 	        return {
 	            tema: null,
-	            Questoes: []
+	            questoes: []
 	        };
+	    },
+	    componentWillMount: function componentWillMount() {
+	        this.setState({
+	            questoes: [{
+	                indice: 0,
+	                texto: "Selecione um tema",
+	                respostas: ["..."],
+	                valida: ""
+	            }]
+	        });
 	    },
 	    AtualizaTema: function AtualizaTema(tema) {
 	        setState({ tema: tema });
@@ -21137,8 +21147,8 @@
 	        return _react2.default.createElement(
 	            'div',
 	            { className: 'container' },
-	            _react2.default.createElement(_Tema2.default, null),
-	            _react2.default.createElement(_Questoes2.default, { questoes: 'questoes' })
+	            _react2.default.createElement(_Tema2.default, { AtualizaQuestoes: this.AtualizaQuestoes }),
+	            _react2.default.createElement(_Questoes2.default, { questoes: this.state.questoes })
 	        );
 	    }
 	});
@@ -21186,9 +21196,6 @@
 	            questaoAtual: null
 	        };
 	    },
-	    getJson: _JsonService2.default.getJson().then(function (response) {
-	        this.setState({ questoes: response });
-	    }),
 	    componentWillMount: function componentWillMount() {
 	        this.setState({
 	            questoes: [{
@@ -21473,7 +21480,7 @@
 	var JsonService = {
 	  getJson: function getJson(tema) {
 	    //o es2015 permite declararmos funções dessa forma sem a necessidade de function
-	    return _axios2.default.get('../Temas/Perguntas'); //o es2015 permite essa nova forma com ${variavel}
+	    return _axios2.default.get('../Temas/Perguntas.json'); //o es2015 permite essa nova forma com ${variavel}
 	  }
 	};
 
@@ -22693,9 +22700,34 @@
 
 /***/ },
 /* 197 */
+/***/ function(module, exports) {
+
+	module.exports = [
+		{
+			"texto": "Como é seu nome",
+			"respostas": [
+				"What is your name"
+			]
+		},
+		{
+			"texto": "Quantos anos você tem?",
+			"respostas": [
+				"How old are you?"
+			]
+		},
+		{
+			"texto": "Como é Londres?",
+			"respostas": [
+				"What is London like?"
+			]
+		}
+	];
+
+/***/ },
+/* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -22705,47 +22737,42 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _Temas = __webpack_require__(199);
+
+	var _Temas2 = _interopRequireDefault(_Temas);
+
+	var _Perguntas = __webpack_require__(197);
+
+	var _Perguntas2 = _interopRequireDefault(_Perguntas);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Tema = _react2.default.createClass({
-	    displayName: "Tema",
+	    displayName: 'Tema',
 
+	    AtualizarQuestoes: function AtualizarQuestoes(event) {
+	        console.log(event.target.value);
+	        if (event.target.value == 'PerguntasJson') {
+	            this.setState({ questoes: _Perguntas2.default });
+	        }
+	    },
 	    render: function render() {
 	        return _react2.default.createElement(
-	            "div",
+	            'div',
 	            null,
 	            _react2.default.createElement(
-	                "select",
-	                { className: "form-control custom-select" },
+	                'form',
+	                null,
 	                _react2.default.createElement(
-	                    "option",
-	                    null,
-	                    "Tema 1"
-	                ),
-	                _react2.default.createElement(
-	                    "option",
-	                    null,
-	                    "Tema 2"
-	                ),
-	                _react2.default.createElement(
-	                    "option",
-	                    null,
-	                    "Tema 3"
-	                ),
-	                _react2.default.createElement(
-	                    "option",
-	                    null,
-	                    "Tema 4"
-	                ),
-	                _react2.default.createElement(
-	                    "option",
-	                    null,
-	                    "Tema 5"
-	                ),
-	                _react2.default.createElement(
-	                    "option",
-	                    null,
-	                    "Tema 6"
+	                    'select',
+	                    { className: 'form-control custom-select', onChange: this.AtualizarQuestoes },
+	                    _Temas2.default.map(function (elemento, index) {
+	                        return _react2.default.createElement(
+	                            'option',
+	                            { key: "option_" + index },
+	                            elemento.titulo
+	                        );
+	                    })
 	                )
 	            )
 	        );
@@ -22753,6 +22780,25 @@
 	});
 
 	exports.default = Tema;
+
+/***/ },
+/* 199 */
+/***/ function(module, exports) {
+
+	module.exports = [
+		{
+			"titulo": "Perguntas",
+			"valor": "PerguntasJson"
+		},
+		{
+			"titulo": "Expressões",
+			"valor": "PerguntasJson"
+		},
+		{
+			"titulo": "Restaurante",
+			"valor": "PerguntasJson"
+		}
+	];
 
 /***/ }
 /******/ ]);

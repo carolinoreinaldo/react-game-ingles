@@ -6,8 +6,22 @@ var Main = React.createClass({
     getInicialState: function(){
         return {
             tema : null,
-            Questoes : []
+            questoes : []
         }
+    },
+    componentWillMount: function(){
+        this.setState({
+             questoes:[
+                {
+                    indice: 0,
+                    texto : "Selecione um tema",
+                    respostas: [
+                        "..."
+                    ],
+                    valida : ""
+                }
+            ]
+        })
     },
     AtualizaTema : function(tema){
         setState({tema : tema});
@@ -18,8 +32,8 @@ var Main = React.createClass({
     render: function() {
         return (
             <div className="container">
-                <Tema />
-                <Questoes questoes = "questoes"/>
+                <Tema AtualizaQuestoes={this.AtualizaQuestoes}/>
+                <Questoes questoes={this.state.questoes}/>
                
             </div>
         )
