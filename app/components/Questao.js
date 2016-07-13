@@ -20,7 +20,7 @@ var Questao = React.createClass({
         this.refs.englishResposta.value = "";
         this.props.proximaQuestao(this.props.questao.indice);
     },
-    componentWillMount : function(){
+    componentWillReceiveProps : function(){
 
     },
     render : function(){

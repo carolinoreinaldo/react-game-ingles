@@ -1,0 +1,23 @@
+[
+    {
+        "indice":0,
+        "texto":"Eu espero que sim",
+        "respostas":[
+            "I hope so"
+        ]
+    },
+    {
+        "indice":1,
+        "texto":"Eu acho que sim",
+        "respostas":[
+            "I think so"
+        ]
+    },
+    {
+        "indice":2,
+        "texto":"De jeito nenhum",
+        "respostas":[
+            "No way"
+        ]
+    }
+]

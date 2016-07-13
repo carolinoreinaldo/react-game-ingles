@@ -49,3 +49,7 @@ npm install --save-dev babel-preset-es2015
 
 --configura o babel para a versão es2015
 
+
+npm install json-loader
+
+--modulo que permite importar JSONs dentro dos componetes
