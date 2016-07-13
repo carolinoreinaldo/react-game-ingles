@@ -2,7 +2,7 @@ import React from 'react';
 import Questao from './Questao';
 import RespostaCorreta from './RespostaCorreta';
 import RespostaErrada from './RespostaErrada';
-import Branco from 'json!../Temas/Perguntas.json';
+import Branco from 'json!../JsonData/BrancoData.json';
 
 
 
@@ -10,50 +10,14 @@ var Questoes = React.createClass({
     getInicialState : function(){
         return{
             questoes : [],
-            questaoAtual : null,
+            questaoAtual : null
         }
     },
     componentWillMount: function(){
+        var questoesPassadas = this.props.questoes;
         this.setState({
-            questoes: [
-                {
-                    indice: 0,
-                    texto : "Qual é o seu nome?",
-                    respostas: [
-                        "What's your name?",
-                        "What is your name?"
-                    ],
-                    valida : ""
-                },
-                {
-                    indice: 1,
-                    texto : "Como é Londres?",
-                    respostas: [
-                         "What's London like?",
-                         "What is London like?"
-                    ],
-                    valida : ""
-                },
-                {
-                    indice: 2,
-                    texto : "Você conhece Londres bem?",
-                    respostas: [ 
-                        "Do you know London well?"
-                    ],        
-                    valida : ""
-                }
-            ],
-            questaoAtual : {
-                indice: 0,
-                texto : "Qual é o seu nome?",
-                respostas: [
-                    "What's your name?",
-                    "What is your name?"
-                ],
-                valida : ""
-            },
-            errada : null,
-            correta : null
+            questoes: questoesPassadas,
+            questaoAtual : questoesPassadas[0]
         })
     },
     proximaQuestao(indice){
@@ -67,6 +31,15 @@ var Questoes = React.createClass({
         this.setState({
             questaoAtual : questaoAtualizada
         })
+    },
+    componentWillReceiveProps : function(props){
+        var questoesPassadas = props.questoes;
+        if (typeof questoesPassadas != 'undefined' && questoesPassadas != null) {
+            this.setState({
+                questoes: questoesPassadas,
+                questaoAtual : questoesPassadas[0]
+            })
+        }
     },
     render : function(){
         return (

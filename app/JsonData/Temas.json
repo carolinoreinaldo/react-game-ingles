@@ -1,14 +1,14 @@
 [
     {
         "titulo":"Perguntas",
-        "valor":"PerguntasJson"
+        "valor":"Perguntas"
     },
     {
         "titulo":"Expressões",
-        "valor":"PerguntasJson"
+        "valor":"Expressoes"
     },
     {
         "titulo":"Restaurante",
-        "valor":"PerguntasJson"
+        "valor":"Restaurante"
     }
 ]

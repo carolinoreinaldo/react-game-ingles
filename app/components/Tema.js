@@ -1,24 +1,22 @@
 import React from 'react'
-import Temas from 'json!../Temas/Temas.json'
-import PerguntasJson from 'json!../Temas/Perguntas.json';
+import Temas from 'json!../JsonData/Temas.json'
+import JsonService from '../services/JsonService';
 
 var Tema = React.createClass({
     AtualizarQuestoes: function(event){
-        console.log(event.target.value);
-        if(event.target.value=='PerguntasJson'){
-            this.setState({questoes:PerguntasJson});
-        }
+        var novasQuestoes = JsonService.getJsonData(event.target.value);
+        this.props.AtualizaQuestoes(novasQuestoes);
     },
     render : function(){
         return (
             <div>
                 <form>
                     <select className="form-control custom-select" onChange={this.AtualizarQuestoes}>
+                    <option>Select</option>
                     {
-                        
                         Temas.map(function(elemento,index){
                             return (
-                                <option key={"option_"+index}>{elemento.titulo}</option>
+                                <option key={"option_"+index} value={elemento.valor}>{elemento.titulo}</option>
                             )
                         })
                     }

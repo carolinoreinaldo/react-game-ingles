@@ -1,6 +1,7 @@
 import React from 'react'
 import Questoes from './Questoes'
 import Tema from './Tema';
+import JsonService from '../services/JsonService';
 
 var Main = React.createClass({
     getInicialState: function(){
@@ -10,24 +11,19 @@ var Main = React.createClass({
         }
     },
     componentWillMount: function(){
+        var JsonTemas = JsonService.getJsonData('Temas');
+        var QuestoesJson = JsonService.getJsonData('Branco');
         this.setState({
-             questoes:[
-                {
-                    indice: 0,
-                    texto : "Selecione um tema",
-                    respostas: [
-                        "..."
-                    ],
-                    valida : ""
-                }
-            ]
-        })
+            tema:JsonTemas,
+            questoes:QuestoesJson
+        });
+        
     },
     AtualizaTema : function(tema){
-        setState({tema : tema});
+        this.setState({tema : tema});
     },
     AtualizaQuestoes : function(Questoes){
-        setState({Questoes:Questoes});
+        this.setState({questoes:Questoes});
     },
     render: function() {
         return (

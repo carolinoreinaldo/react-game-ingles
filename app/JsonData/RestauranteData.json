@@ -1,0 +1,16 @@
+[
+    {
+        "indice":0,
+        "texto":"Você está pronto para fazer o pedido?",
+        "respostas":[
+            "Are you ready to order?"
+        ]
+    },
+    {
+        "indice":1,
+        "texto":"Pede me trazer um xicara de chá?",
+        "respostas":[
+            "Can I have a cup of tea?"
+        ]
+    }
+]

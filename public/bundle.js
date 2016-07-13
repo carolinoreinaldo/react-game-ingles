@@ -21112,9 +21112,13 @@
 
 	var _Questoes2 = _interopRequireDefault(_Questoes);
 
-	var _Tema = __webpack_require__(198);
+	var _Tema = __webpack_require__(177);
 
 	var _Tema2 = _interopRequireDefault(_Tema);
+
+	var _JsonService = __webpack_require__(178);
+
+	var _JsonService2 = _interopRequireDefault(_JsonService);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21128,20 +21132,18 @@
 	        };
 	    },
 	    componentWillMount: function componentWillMount() {
+	        var JsonTemas = _JsonService2.default.getJsonData('Temas');
+	        var QuestoesJson = _JsonService2.default.getJsonData('Branco');
 	        this.setState({
-	            questoes: [{
-	                indice: 0,
-	                texto: "Selecione um tema",
-	                respostas: ["..."],
-	                valida: ""
-	            }]
+	            tema: JsonTemas,
+	            questoes: QuestoesJson
 	        });
 	    },
 	    AtualizaTema: function AtualizaTema(tema) {
-	        setState({ tema: tema });
+	        this.setState({ tema: tema });
 	    },
 	    AtualizaQuestoes: function AtualizaQuestoes(Questoes) {
-	        setState({ Questoes: Questoes });
+	        this.setState({ questoes: Questoes });
 	    },
 	    render: function render() {
 	        return _react2.default.createElement(
@@ -21181,9 +21183,9 @@
 
 	var _RespostaErrada2 = _interopRequireDefault(_RespostaErrada);
 
-	var _JsonService = __webpack_require__(177);
+	var _BrancoData = __webpack_require__(204);
 
-	var _JsonService2 = _interopRequireDefault(_JsonService);
+	var _BrancoData2 = _interopRequireDefault(_BrancoData);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21197,31 +21199,10 @@
 	        };
 	    },
 	    componentWillMount: function componentWillMount() {
+	        var questoesPassadas = this.props.questoes;
 	        this.setState({
-	            questoes: [{
-	                indice: 0,
-	                texto: "Qual é o seu nome?",
-	                respostas: ["What's your name?", "What is your name?"],
-	                valida: ""
-	            }, {
-	                indice: 1,
-	                texto: "Como é Londres?",
-	                respostas: ["What's London like?", "What is London like?"],
-	                valida: ""
-	            }, {
-	                indice: 2,
-	                texto: "Você conhece Londres bem?",
-	                respostas: ["Do you know London well?"],
-	                valida: ""
-	            }],
-	            questaoAtual: {
-	                indice: 0,
-	                texto: "Qual é o seu nome?",
-	                respostas: ["What's your name?", "What is your name?"],
-	                valida: ""
-	            },
-	            errada: null,
-	            correta: null
+	            questoes: questoesPassadas,
+	            questaoAtual: questoesPassadas[0]
 	        });
 	    },
 	    proximaQuestao: function proximaQuestao(indice) {
@@ -21236,6 +21217,15 @@
 	        this.setState({
 	            questaoAtual: questaoAtualizada
 	        });
+	    },
+	    componentWillReceiveProps: function componentWillReceiveProps(props) {
+	        var questoesPassadas = props.questoes;
+	        if (typeof questoesPassadas != 'undefined' && questoesPassadas != null) {
+	            this.setState({
+	                questoes: questoesPassadas,
+	                questaoAtual: questoesPassadas[0]
+	            });
+	        }
 	    },
 	    render: function render() {
 	        return _react2.default.createElement(
@@ -21289,7 +21279,7 @@
 	        this.props.proximaQuestao(this.props.questao.indice);
 	    },
 
-	    componentWillMount: function componentWillMount() {},
+	    componentWillReceiveProps: function componentWillReceiveProps() {},
 	    render: function render() {
 	        return _react2.default.createElement(
 	            "form",
@@ -21471,41 +21461,143 @@
 
 	'use strict';
 
-	var _axios = __webpack_require__(178);
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Temas = __webpack_require__(199);
+
+	var _Temas2 = _interopRequireDefault(_Temas);
+
+	var _JsonService = __webpack_require__(178);
+
+	var _JsonService2 = _interopRequireDefault(_JsonService);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Tema = _react2.default.createClass({
+	    displayName: 'Tema',
+
+	    AtualizarQuestoes: function AtualizarQuestoes(event) {
+	        var novasQuestoes = _JsonService2.default.getJsonData(event.target.value);
+	        this.props.AtualizaQuestoes(novasQuestoes);
+	    },
+	    render: function render() {
+	        return _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(
+	                'form',
+	                null,
+	                _react2.default.createElement(
+	                    'select',
+	                    { className: 'form-control custom-select', onChange: this.AtualizarQuestoes },
+	                    _react2.default.createElement(
+	                        'option',
+	                        null,
+	                        'Select'
+	                    ),
+	                    _Temas2.default.map(function (elemento, index) {
+	                        return _react2.default.createElement(
+	                            'option',
+	                            { key: "option_" + index, value: elemento.valor },
+	                            elemento.titulo
+	                        );
+	                    })
+	                )
+	            )
+	        );
+	    }
+	});
+
+	exports.default = Tema;
+
+/***/ },
+/* 178 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _axios = __webpack_require__(179);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
+	var _BrancoData = __webpack_require__(204);
+
+	var _BrancoData2 = _interopRequireDefault(_BrancoData);
+
+	var _Temas = __webpack_require__(199);
+
+	var _Temas2 = _interopRequireDefault(_Temas);
+
+	var _PerguntasData = __webpack_require__(202);
+
+	var _PerguntasData2 = _interopRequireDefault(_PerguntasData);
+
+	var _RestauranteData = __webpack_require__(203);
+
+	var _RestauranteData2 = _interopRequireDefault(_RestauranteData);
+
+	var _ExpressoesData = __webpack_require__(201);
+
+	var _ExpressoesData2 = _interopRequireDefault(_ExpressoesData);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/**
+	 * Esser serviço serve para carregar os jsons que serão utilizados
+	 * por esta aplicação
+	**/
+
 
 	var JsonService = {
 	  getJson: function getJson(tema) {
 	    //o es2015 permite declararmos funções dessa forma sem a necessidade de function
 	    return _axios2.default.get('../Temas/Perguntas.json'); //o es2015 permite essa nova forma com ${variavel}
+	  },
+	  getJsonData: function getJsonData(jsonDescription) {
+	    if (jsonDescription == 'Branco') {
+	      return _BrancoData2.default;
+	    } else if (jsonDescription == 'Perguntas') {
+	      return _PerguntasData2.default;
+	    } else if (jsonDescription == 'Restaurante') {
+	      return _RestauranteData2.default;
+	    } else if (jsonDescription == 'Expressoes') {
+	      return _ExpressoesData2.default;
+	    } else if (jsonDescription == 'Temas') {
+	      return _Temas2.default;
+	    } else {
+	      return null;
+	    }
 	  }
 	};
 
 	module.exports = JsonService;
 
 /***/ },
-/* 178 */
+/* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(179);
+	module.exports = __webpack_require__(180);
 
 /***/ },
-/* 179 */
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var defaults = __webpack_require__(180);
-	var utils = __webpack_require__(181);
-	var dispatchRequest = __webpack_require__(183);
-	var InterceptorManager = __webpack_require__(192);
-	var isAbsoluteURL = __webpack_require__(193);
-	var combineURLs = __webpack_require__(194);
-	var bind = __webpack_require__(195);
-	var transformData = __webpack_require__(187);
+	var defaults = __webpack_require__(181);
+	var utils = __webpack_require__(182);
+	var dispatchRequest = __webpack_require__(184);
+	var InterceptorManager = __webpack_require__(193);
+	var isAbsoluteURL = __webpack_require__(194);
+	var combineURLs = __webpack_require__(195);
+	var bind = __webpack_require__(196);
+	var transformData = __webpack_require__(188);
 
 	function Axios(defaultConfig) {
 	  this.defaults = utils.merge({}, defaultConfig);
@@ -21594,7 +21686,7 @@
 	axios.all = function all(promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(196);
+	axios.spread = __webpack_require__(197);
 
 	// Provide aliases for supported request methods
 	utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
@@ -21622,13 +21714,13 @@
 
 
 /***/ },
-/* 180 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(181);
-	var normalizeHeaderName = __webpack_require__(182);
+	var utils = __webpack_require__(182);
+	var normalizeHeaderName = __webpack_require__(183);
 
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -21700,7 +21792,7 @@
 
 
 /***/ },
-/* 181 */
+/* 182 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -21983,12 +22075,12 @@
 
 
 /***/ },
-/* 182 */
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(181);
+	var utils = __webpack_require__(182);
 
 	module.exports = function normalizeHeaderName(headers, normalizedName) {
 	  utils.forEach(headers, function processHeader(value, name) {
@@ -22001,7 +22093,7 @@
 
 
 /***/ },
-/* 183 */
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -22023,10 +22115,10 @@
 	        adapter = config.adapter;
 	      } else if (typeof XMLHttpRequest !== 'undefined') {
 	        // For browsers use XHR adapter
-	        adapter = __webpack_require__(184);
+	        adapter = __webpack_require__(185);
 	      } else if (typeof process !== 'undefined') {
 	        // For node use HTTP adapter
-	        adapter = __webpack_require__(184);
+	        adapter = __webpack_require__(185);
 	      }
 
 	      if (typeof adapter === 'function') {
@@ -22042,18 +22134,18 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 184 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(181);
-	var buildURL = __webpack_require__(185);
-	var parseHeaders = __webpack_require__(186);
-	var transformData = __webpack_require__(187);
-	var isURLSameOrigin = __webpack_require__(188);
-	var btoa = (typeof window !== 'undefined' && window.btoa) || __webpack_require__(189);
-	var settle = __webpack_require__(190);
+	var utils = __webpack_require__(182);
+	var buildURL = __webpack_require__(186);
+	var parseHeaders = __webpack_require__(187);
+	var transformData = __webpack_require__(188);
+	var isURLSameOrigin = __webpack_require__(189);
+	var btoa = (typeof window !== 'undefined' && window.btoa) || __webpack_require__(190);
+	var settle = __webpack_require__(191);
 
 	module.exports = function xhrAdapter(resolve, reject, config) {
 	  var requestData = config.data;
@@ -22150,7 +22242,7 @@
 	  // This is only done if running in a standard browser environment.
 	  // Specifically not if we're in a web worker, or react-native.
 	  if (utils.isStandardBrowserEnv()) {
-	    var cookies = __webpack_require__(191);
+	    var cookies = __webpack_require__(192);
 
 	    // Add xsrf header
 	    var xsrfValue = config.withCredentials || isURLSameOrigin(config.url) ?
@@ -22211,12 +22303,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 185 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(181);
+	var utils = __webpack_require__(182);
 
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -22285,12 +22377,12 @@
 
 
 /***/ },
-/* 186 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(181);
+	var utils = __webpack_require__(182);
 
 	/**
 	 * Parse headers into an object
@@ -22328,12 +22420,12 @@
 
 
 /***/ },
-/* 187 */
+/* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(181);
+	var utils = __webpack_require__(182);
 
 	/**
 	 * Transform the data for a request or a response
@@ -22354,12 +22446,12 @@
 
 
 /***/ },
-/* 188 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(181);
+	var utils = __webpack_require__(182);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -22428,7 +22520,7 @@
 
 
 /***/ },
-/* 189 */
+/* 190 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22470,7 +22562,7 @@
 
 
 /***/ },
-/* 190 */
+/* 191 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22494,12 +22586,12 @@
 
 
 /***/ },
-/* 191 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(181);
+	var utils = __webpack_require__(182);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -22553,12 +22645,12 @@
 
 
 /***/ },
-/* 192 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(181);
+	var utils = __webpack_require__(182);
 
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -22611,7 +22703,7 @@
 
 
 /***/ },
-/* 193 */
+/* 194 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22631,7 +22723,7 @@
 
 
 /***/ },
-/* 194 */
+/* 195 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22649,7 +22741,7 @@
 
 
 /***/ },
-/* 195 */
+/* 196 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22666,7 +22758,7 @@
 
 
 /***/ },
-/* 196 */
+/* 197 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22699,23 +22791,75 @@
 
 
 /***/ },
-/* 197 */
+/* 198 */,
+/* 199 */
 /***/ function(module, exports) {
 
 	module.exports = [
 		{
-			"texto": "Como é seu nome",
+			"titulo": "Perguntas",
+			"valor": "Perguntas"
+		},
+		{
+			"titulo": "Expressões",
+			"valor": "Expressoes"
+		},
+		{
+			"titulo": "Restaurante",
+			"valor": "Restaurante"
+		}
+	];
+
+/***/ },
+/* 200 */,
+/* 201 */
+/***/ function(module, exports) {
+
+	module.exports = [
+		{
+			"indice": 0,
+			"texto": "Eu espero que sim",
 			"respostas": [
-				"What is your name"
+				"I hope so"
 			]
 		},
 		{
+			"indice": 1,
+			"texto": "Eu acho que sim",
+			"respostas": [
+				"I think so"
+			]
+		},
+		{
+			"indice": 2,
+			"texto": "De jeito nenhum",
+			"respostas": [
+				"No way"
+			]
+		}
+	];
+
+/***/ },
+/* 202 */
+/***/ function(module, exports) {
+
+	module.exports = [
+		{
+			"indice": 0,
+			"texto": "Como é seu nome",
+			"respostas": [
+				"What is your name?"
+			]
+		},
+		{
+			"indice": 1,
 			"texto": "Quantos anos você tem?",
 			"respostas": [
 				"How old are you?"
 			]
 		},
 		{
+			"indice": 2,
 			"texto": "Como é Londres?",
 			"respostas": [
 				"What is London like?"
@@ -22724,79 +22868,37 @@
 	];
 
 /***/ },
-/* 198 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _Temas = __webpack_require__(199);
-
-	var _Temas2 = _interopRequireDefault(_Temas);
-
-	var _Perguntas = __webpack_require__(197);
-
-	var _Perguntas2 = _interopRequireDefault(_Perguntas);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var Tema = _react2.default.createClass({
-	    displayName: 'Tema',
-
-	    AtualizarQuestoes: function AtualizarQuestoes(event) {
-	        console.log(event.target.value);
-	        if (event.target.value == 'PerguntasJson') {
-	            this.setState({ questoes: _Perguntas2.default });
-	        }
-	    },
-	    render: function render() {
-	        return _react2.default.createElement(
-	            'div',
-	            null,
-	            _react2.default.createElement(
-	                'form',
-	                null,
-	                _react2.default.createElement(
-	                    'select',
-	                    { className: 'form-control custom-select', onChange: this.AtualizarQuestoes },
-	                    _Temas2.default.map(function (elemento, index) {
-	                        return _react2.default.createElement(
-	                            'option',
-	                            { key: "option_" + index },
-	                            elemento.titulo
-	                        );
-	                    })
-	                )
-	            )
-	        );
-	    }
-	});
-
-	exports.default = Tema;
-
-/***/ },
-/* 199 */
+/* 203 */
 /***/ function(module, exports) {
 
 	module.exports = [
 		{
-			"titulo": "Perguntas",
-			"valor": "PerguntasJson"
+			"indice": 0,
+			"texto": "Você está pronto para fazer o pedido?",
+			"respostas": [
+				"Are you ready to order?"
+			]
 		},
 		{
-			"titulo": "Expressões",
-			"valor": "PerguntasJson"
-		},
+			"indice": 1,
+			"texto": "Pede me trazer um xicara de chá?",
+			"respostas": [
+				"Can I have a cup of tea?"
+			]
+		}
+	];
+
+/***/ },
+/* 204 */
+/***/ function(module, exports) {
+
+	module.exports = [
 		{
-			"titulo": "Restaurante",
-			"valor": "PerguntasJson"
+			"indice": 0,
+			"texto": "",
+			"respostas": [
+				""
+			]
 		}
 	];
 
