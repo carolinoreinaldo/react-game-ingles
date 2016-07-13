@@ -2,7 +2,8 @@ import React from 'react';
 import Questao from './Questao';
 import RespostaCorreta from './RespostaCorreta';
 import RespostaErrada from './RespostaErrada';
-import JsonService from '../services/JsonService'
+import Branco from 'json!../Temas/Perguntas.json';
+
 
 
 var Questoes = React.createClass({
