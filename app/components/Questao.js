@@ -18,6 +18,7 @@ var Questao = React.createClass({
     proximaQuestao(event){
         event.preventDefault();
         this.refs.englishResposta.value = "";
+        this.props.questao.valida = "";
         this.props.proximaQuestao(this.props.questao.indice);
     },
     componentWillReceiveProps : function(){
@@ -27,7 +28,7 @@ var Questao = React.createClass({
         return (
             <form>
                 <div className="form-group">
-                    <label htmlFor="exampleInputEmail1"><h4>{this.props.questao.texto} ( Escreva em Inglês )</h4></label>
+                    <label htmlFor="exampleInputEmail1"><h4>{this.props.questao.texto}</h4></label>
                     <input
                     type="text"
                     ref="englishResposta"

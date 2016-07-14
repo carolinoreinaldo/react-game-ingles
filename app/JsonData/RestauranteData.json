@@ -12,5 +12,174 @@
         "respostas":[
             "Can I have a cup of tea?"
         ]
+    },
+    {
+        "indice":2,
+        "texto":"Você gostaria de ver o cardápio?",
+        "respostas":[
+            "Would you like to see the menu?"
+        ]
+    },
+    {
+        "indice":3,
+        "texto":"Você está pronto para fazer o pedido?",
+        "respostas":[
+            "Are you ready to order?"
+        ]
+    },
+    {
+        "indice":4,
+        "texto":"Qual é a sopa do dia?",
+        "respostas":[
+            "What's the soup of the day?"
+        ]
+    },
+    {
+        "indice":5,
+        "texto":"Eu tomarei uma sopa de entrada",
+        "respostas":[
+            "I'll have soup as a starter"
+        ]
+    },
+    {
+        "indice":6,
+        "texto":"E o prato principal?",
+        "respostas":[
+            "And as a main course?"
+        ]
+    },
+    {
+        "indice":7,
+        "texto":"O que você recomenda?",
+        "respostas":[
+            "What do you recommend?"
+        ]
+    },
+    {
+        "indice":8,
+        "texto":"Aqui está ",
+        "respostas":[
+            "Here you are ( Quando se entrega a refeição )"
+        ]
+    },
+    {
+        "indice":9,
+        "texto":"Você gostaria de algo para beber?",
+        "respostas":[
+            "Would you like something to drink?"
+        ]
+    },
+    {
+        "indice":10,
+        "texto":"Você gostaria de algo para comer?",
+        "respostas":[
+            "Would you like something to eat?"
+        ]
+    },
+    {
+        "indice":11,
+        "texto":"Eu quero uma taça de vinho tinto, por favor",
+        "respostas":[
+            "I'll have a glass of red wine, please"
+        ]
+    },
+    {
+        "indice":12,
+        "texto":"Você gostaria de mais alguma coisa?",
+        "respostas":[
+            "Would you like anything else?"
+        ]
+    },
+    {
+        "indice":13,
+        "texto":"Pode me trazer a conta , por favor?",
+        "respostas":[
+            "Can I have the check, please?",
+            "Can I have the bill, please?"
+        ]
+    },
+    {
+        "indice":14,
+        "texto":"Eu não quero nada para beber",
+        "respostas":[
+            "I don't want anything to drink"
+        ]
+    },
+    {
+        "indice":15,
+        "texto":"Eu não quero nada para comer",
+        "respostas":[
+            "I don't want anything to eat"
+        ]
+    },
+    {
+        "indice":16,
+        "texto":"Nós temos algo para comer?",
+        "respostas":[
+            "Do we have anything to eat?"
+        ]
+    },
+    {
+        "indice":17,
+        "texto":"Nós não temos nada para comer",
+        "respostas":[
+            "He doesn't have anything to drink"
+        ]
+    },
+    {
+        "indice":18,
+        "texto":"Eu gostaria de algo para beber",
+        "respostas":[
+            "I'd like something to drink!"
+        ]
+    },
+    {
+        "indice":19,
+        "texto":"Há alguma coisa para comer?",
+        "respostas":[
+            "Is there anything to eat?"
+        ]
+    },
+    {
+        "indice":20,
+        "texto":"Você quer algo para comer?",
+        "respostas":[
+            "Do you want anything to eat?"
+        ]
+    },
+    {
+        "indice":21,
+        "texto":"Aqui está algo para comer",
+        "respostas":[
+            "Here's something to eat"
+        ]
+    },
+    {
+        "indice":22,
+        "texto":"Comida indiana é popular em Londres e é frequentemente muito picante",
+        "respostas":[
+            "Indian food is popular in London and is often very spicy"
+        ]
+    },
+    {
+        "indice":23,
+        "texto":"Aquele prato é comido com frequência em regiões próximas ao mar",
+        "respostas":[
+            "Thas dish is often eaten by the seaside"
+        ]
+    },
+    {
+        "indice":24,
+        "texto":"Aquela refeição é um saboroso prato feito de salsichas",
+        "respostas":[
+            "That meal is a savoury dish made of sausages"
+        ]
+    },
+    {
+        "indice":25,
+        "texto":"Este refrigerante está azedo",
+        "respostas":[
+            "This soft drink is sour"
+        ]
     }
 ]
