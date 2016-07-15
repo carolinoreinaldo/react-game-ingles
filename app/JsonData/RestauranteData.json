@@ -181,5 +181,41 @@
         "respostas":[
             "This soft drink is sour"
         ]
+    },
+    {
+        "indice":26,
+        "texto":"O jantar está pronto?",
+        "respostas":[
+            "The dinner ready yet?"
+        ]
+    },
+    {
+        "indice":27,
+        "texto":"Eu estou cortando as cebolas",
+        "respostas":[
+            "I'm chopping the onions"
+        ]
+    },
+    {
+        "indice":28,
+        "texto":"Você pode descascar as batatas",
+        "respostas":[
+            "Can you peel the potatoes?"
+        ]
+    },
+    {
+        "indice":29,
+        "texto":"Nós estamos cozinhando ainda",
+        "respostas":[
+            "We are still cooking",
+            "We're still cooking"
+        ]
+    },
+    {
+        "indice":30,
+        "texto":"Algo está/tem um cheiro delicioso",
+        "respostas":[
+            "Something smells delicious"
+        ]
     }
 ]
