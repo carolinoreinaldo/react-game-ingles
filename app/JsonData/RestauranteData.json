@@ -36,7 +36,7 @@
     },
     {
         "indice":5,
-        "texto":"Eu tomarei uma sopa de entrada",
+        "texto":"Eu quero uma sopa de entrada",
         "respostas":[
             "I'll have soup as a starter"
         ]
@@ -57,16 +57,17 @@
     },
     {
         "indice":8,
-        "texto":"Aqui está ",
+        "texto":"Aqui está ( Quando se entrega a refeição )",
         "respostas":[
-            "Here you are ( Quando se entrega a refeição )"
+            "Here you are"
         ]
     },
     {
         "indice":9,
         "texto":"Você gostaria de algo para beber?",
         "respostas":[
-            "Would you like something to drink?"
+            "Would you like something to drink?",
+            "Would you like anything to drink?"
         ]
     },
     {
@@ -102,7 +103,8 @@
         "indice":14,
         "texto":"Eu não quero nada para beber",
         "respostas":[
-            "I don't want anything to drink"
+            "I don't want anything to drink",
+            "I do not want anything to drink"
         ]
     },
     {
@@ -123,7 +125,8 @@
         "indice":17,
         "texto":"Nós não temos nada para comer",
         "respostas":[
-            "He doesn't have anything to drink"
+            "We don't have anything to eat",
+            "We do not have anything to eat"
         ]
     },
     {
@@ -151,7 +154,8 @@
         "indice":21,
         "texto":"Aqui está algo para comer",
         "respostas":[
-            "Here's something to eat"
+            "Here's something to eat",
+            "Here is something to eat"
         ]
     },
     {
@@ -165,7 +169,7 @@
         "indice":23,
         "texto":"Aquele prato é comido com frequência em regiões próximas ao mar",
         "respostas":[
-            "Thas dish is often eaten by the seaside"
+            "That dish is often eaten by the seaside"
         ]
     },
     {
