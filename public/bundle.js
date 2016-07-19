@@ -21116,6 +21116,10 @@
 
 	var _Tema2 = _interopRequireDefault(_Tema);
 
+	var _pontos = __webpack_require__(203);
+
+	var _pontos2 = _interopRequireDefault(_pontos);
+
 	var _JsonService = __webpack_require__(180);
 
 	var _JsonService2 = _interopRequireDefault(_JsonService);
@@ -21149,7 +21153,16 @@
 	        return _react2.default.createElement(
 	            'div',
 	            { className: 'container' },
-	            _react2.default.createElement(_Tema2.default, { AtualizaQuestoes: this.AtualizaQuestoes }),
+	            _react2.default.createElement(
+	                'div',
+	                { className: 'col-lg-9 col-md-6 mt10 mb20' },
+	                _react2.default.createElement(_Tema2.default, { AtualizaQuestoes: this.AtualizaQuestoes })
+	            ),
+	            _react2.default.createElement(
+	                'div',
+	                { className: 'col-lg-3 col-md-6 mt10 mb20' },
+	                _react2.default.createElement(_pontos2.default, null)
+	            ),
 	            _react2.default.createElement(_Questoes2.default, { questoes: this.state.questoes })
 	        );
 	    }
@@ -21290,7 +21303,7 @@
 	                { className: "form-group" },
 	                _react2.default.createElement(
 	                    "label",
-	                    { htmlFor: "exampleInputEmail1" },
+	                    { htmlFor: "exampleInputEmail1", className: "customLabel" },
 	                    _react2.default.createElement(
 	                        "h4",
 	                        null,
@@ -21333,7 +21346,7 @@
 	    if (props.questao && props.questao.valida == "VALIDA") {
 	        return _react2.default.createElement(
 	            "div",
-	            { id: "Correto" },
+	            { id: "Correto", className: "customResposta" },
 	            _react2.default.createElement(
 	                "h3",
 	                null,
@@ -21404,7 +21417,7 @@
 	    if (props.questao && props.questao.valida == "INVALIDA") {
 	        return _react2.default.createElement(
 	            "div",
-	            { id: "Errado" },
+	            { id: "Errado", className: "customResposta" },
 	            _react2.default.createElement(
 	                "h3",
 	                null,
@@ -22893,7 +22906,7 @@
 		},
 		{
 			"indice": 5,
-			"texto": "Eu tomarei uma sopa de entrada",
+			"texto": "Eu quero uma sopa de entrada",
 			"respostas": [
 				"I'll have soup as a starter"
 			]
@@ -22914,16 +22927,17 @@
 		},
 		{
 			"indice": 8,
-			"texto": "Aqui está ",
+			"texto": "Aqui está ( Quando se entrega a refeição )",
 			"respostas": [
-				"Here you are ( Quando se entrega a refeição )"
+				"Here you are"
 			]
 		},
 		{
 			"indice": 9,
 			"texto": "Você gostaria de algo para beber?",
 			"respostas": [
-				"Would you like something to drink?"
+				"Would you like something to drink?",
+				"Would you like anything to drink?"
 			]
 		},
 		{
@@ -22959,7 +22973,8 @@
 			"indice": 14,
 			"texto": "Eu não quero nada para beber",
 			"respostas": [
-				"I don't want anything to drink"
+				"I don't want anything to drink",
+				"I do not want anything to drink"
 			]
 		},
 		{
@@ -22980,7 +22995,8 @@
 			"indice": 17,
 			"texto": "Nós não temos nada para comer",
 			"respostas": [
-				"He doesn't have anything to drink"
+				"We don't have anything to eat",
+				"We do not have anything to eat"
 			]
 		},
 		{
@@ -23008,7 +23024,8 @@
 			"indice": 21,
 			"texto": "Aqui está algo para comer",
 			"respostas": [
-				"Here's something to eat"
+				"Here's something to eat",
+				"Here is something to eat"
 			]
 		},
 		{
@@ -23022,7 +23039,7 @@
 			"indice": 23,
 			"texto": "Aquele prato é comido com frequência em regiões próximas ao mar",
 			"respostas": [
-				"Thas dish is often eaten by the seaside"
+				"That dish is often eaten by the seaside"
 			]
 		},
 		{
@@ -23037,6 +23054,42 @@
 			"texto": "Este refrigerante está azedo",
 			"respostas": [
 				"This soft drink is sour"
+			]
+		},
+		{
+			"indice": 26,
+			"texto": "O jantar está pronto?",
+			"respostas": [
+				"The dinner ready yet?"
+			]
+		},
+		{
+			"indice": 27,
+			"texto": "Eu estou cortando as cebolas",
+			"respostas": [
+				"I'm chopping the onions"
+			]
+		},
+		{
+			"indice": 28,
+			"texto": "Você pode descascar as batatas",
+			"respostas": [
+				"Can you peel the potatoes?"
+			]
+		},
+		{
+			"indice": 29,
+			"texto": "Nós estamos cozinhando ainda",
+			"respostas": [
+				"We are still cooking",
+				"We're still cooking"
+			]
+		},
+		{
+			"indice": 30,
+			"texto": "Algo está/tem um cheiro delicioso",
+			"respostas": [
+				"Something smells delicious"
 			]
 		}
 	];
@@ -23068,6 +23121,82 @@
 			]
 		}
 	];
+
+/***/ },
+/* 203 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Questao = __webpack_require__(174);
+
+	var _Questao2 = _interopRequireDefault(_Questao);
+
+	var _RespostaCorreta = __webpack_require__(175);
+
+	var _RespostaCorreta2 = _interopRequireDefault(_RespostaCorreta);
+
+	var _RespostaErrada = __webpack_require__(176);
+
+	var _RespostaErrada2 = _interopRequireDefault(_RespostaErrada);
+
+	var _BrancoData = __webpack_require__(177);
+
+	var _BrancoData2 = _interopRequireDefault(_BrancoData);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Questoes = _react2.default.createClass({
+	    displayName: 'Questoes',
+
+	    getInicialState: function getInicialState() {
+	        return {
+	            questoes: [],
+	            questaoAtual: null
+	        };
+	    },
+	    componentWillMount: function componentWillMount() {},
+	    componentWillReceiveProps: function componentWillReceiveProps(props) {
+	        var questoesPassadas = props.questoes;
+	        if (typeof questoesPassadas != 'undefined' && questoesPassadas != null) {
+	            this.setState({
+	                questoes: questoesPassadas,
+	                questaoAtual: questoesPassadas[0]
+	            });
+	        }
+	    },
+	    render: function render() {
+	        return _react2.default.createElement(
+	            'div',
+	            { className: 'divPontos' },
+	            _react2.default.createElement(
+	                'h4',
+	                null,
+	                'Exercicios Feitos : 10'
+	            ),
+	            _react2.default.createElement(
+	                'h4',
+	                { className: 'bg-success' },
+	                'Corretos : 6'
+	            ),
+	            _react2.default.createElement(
+	                'h4',
+	                { className: 'bg-danger' },
+	                'Errados :  4'
+	            )
+	        );
+	    }
+	});
+
+	exports.default = Questoes;
 
 /***/ }
 /******/ ]);

@@ -3,7 +3,7 @@ import React from 'react';
 function RespostaErrada(props){
     if(props.questao && props.questao.valida=="INVALIDA"){
         return (
-            <div id="Errado">
+            <div id="Errado" className="customResposta">
                 <h3><p className="bg-danger custom-title">Errado!</p></h3>
                 <h4>Veja as opções corretas:</h4>
                 <ol>

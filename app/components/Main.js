@@ -1,6 +1,7 @@
 import React from 'react'
 import Questoes from './Questoes'
 import Tema from './Tema';
+import Pontos from './pontos';
 import JsonService from '../services/JsonService';
 
 var Main = React.createClass({
@@ -28,9 +29,13 @@ var Main = React.createClass({
     render: function() {
         return (
             <div className="container">
-                <Tema AtualizaQuestoes={this.AtualizaQuestoes}/>
+                <div className="col-lg-9 col-md-6 mt10 mb20">
+                    <Tema AtualizaQuestoes={this.AtualizaQuestoes}/>
+                </div>
+                <div className="col-lg-3 col-md-6 mt10 mb20">
+                    <Pontos />
+                </div>
                 <Questoes questoes={this.state.questoes}/>
-               
             </div>
         )
     }

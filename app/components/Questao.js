@@ -28,7 +28,7 @@ var Questao = React.createClass({
         return (
             <form>
                 <div className="form-group">
-                    <label htmlFor="exampleInputEmail1"><h4>{this.props.questao.texto}</h4></label>
+                    <label htmlFor="exampleInputEmail1" className="customLabel"><h4>{this.props.questao.texto}</h4></label>
                     <input
                     type="text"
                     ref="englishResposta"

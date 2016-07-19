@@ -3,7 +3,7 @@ import React from 'react'
 function RespostaCorreta(props){
     if(props.questao && props.questao.valida=="VALIDA"){
         return (
-            <div id="Correto">
+            <div id="Correto" className="customResposta">
                 <h3><p className="bg-success custom-title">Correto!</p></h3>
                 <h4>Veja também outras opções:</h4>
                 <ol>
